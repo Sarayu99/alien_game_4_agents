@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+#BSUB -J alien_game
+#BSUB -o /home/sarayu_anshuman/summer_research_2026/alien_game_3_agents/alien_game.%J.out
+#BSUB -e /home/sarayu_anshuman/summer_research_2026/alien_game_3_agents/alien_game.%J.err
+#BSUB -n 1
+#BSUB -W 06:00
+#BSUB -q normal
+#BSUB -u sarayu_anshuman@berkeley.edu
+
+echo "Job started on: $(hostname)"
+echo "Job started at: $(date)"
+echo "Current directory: $(pwd)"
+
+cd ~/summer_research_2026/alien_game_3_agents
+
+source ~/.bashrc
+
+source /apps/anaconda3/bin/activate summer_research_2026_env
+
+# ---------------------------------------------------------------------------
+# API KEY
+# ---------------------------------------------------------------------------
+# Option 1 (matches your original sample script): export it as an
+# environment variable here. Uncomment the line below and paste your key.
+# export ANTHROPIC_API_KEY="sk-ant-your-key-here"
+#
+# Option 2 (recommended): paste your key directly into config.py instead
+# (the API_KEY variable near the top of that file), and leave the line
+# above commented out. config.py will use that value automatically.
+
+# ---------------------------------------------------------------------------
+# RUN THE EXPERIMENT
+# ---------------------------------------------------------------------------
+# There are now two entry points, depending on what you want this job to do:
+#
+# (A) Full K=0/5/9 sweep (default below): runs all four agents (A/B/C/D)
+#     once per K value in config.K_VALUES, saves CSVs into outputs/K0/,
+#     outputs/K5/, outputs/K9/, generates Graphs 1-6 into figures/K0/,
+#     figures/K5/, figures/K9/, and finally produces the combined
+#     cross-complexity Graph 7 (figures/fig7_cross_k_comparison.png).
+#     This makes 4 agents x 3 K values worth of Claude API calls (Agent C
+#     counted once per epsilon value in config.EPSILON_VALUES) -- the
+#     -W walltime above is set higher than the original single-K script
+#     to account for this; adjust further if you raise N_TRIALS.
+#
+#     python run_multi_k_experiment.py
+#
+# (B) Single landscape only (one K value, from config.py's K_COMPLEXITY,
+#     or override with --K): runs all four agents once, saves CSVs into
+#     outputs/, and generates Graphs 1-6 into figures/. No Graph 7 (that
+#     only makes sense once more than one K value has been run). Comment
+#     out the multi-K line above and uncomment one of these instead:
+#
+#     python run_experiment.py
+#     # python run_experiment.py --K 5 --N 10 --trials 24 --seed 42
+
+python run_multi_k_experiment.py
+
+echo "Job finished at: $(date)"
