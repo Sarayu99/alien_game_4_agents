@@ -1,0 +1,5 @@
+agent,epsilon,trial,config,payoff,best_payoff_so_far,search_distance,round_type,success,reasoning
+A_myopic_local_search,,0,"(0, 1, 1, 1, 1, 0, 1, 1, 0, 0)",0.19026804865351762,0.19026804865351762,,given_start,True,N/A -- starting configuration given for free (no choice made).
+A_myopic_local_search,,1,"(0, 0, 1, 0, 0, 0, 0, 0, 1, 0)",0.48938667328867985,0.48938667328867985,6.0,long_jump,True,"N/A -- hardcoded myopic local search (Billinger et al. 2014's p=0 baseline): no Claude API call, no memory beyond the current best-known configuration."
+A_myopic_local_search,,2,"(1, 0, 1, 0, 0, 0, 0, 0, 1, 0)",0.5095477936180591,0.5095477936180591,1.0,myopic_local_move,True,"N/A -- hardcoded myopic local search (Billinger et al. 2014's p=0 baseline): no Claude API call, no memory beyond the current best-known configuration."
+A_myopic_local_search,,3,"(1, 1, 1, 0, 0, 0, 0, 0, 1, 0)",0.5295638983242839,0.5295638983242839,1.0,myopic_local_move,True,"N/A -- hardcoded myopic local search (Billinger et al. 2014's p=0 baseline): no Claude API call, no memory beyond the current best-known configuration."

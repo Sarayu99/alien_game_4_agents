@@ -1,0 +1,2 @@
+agent,epsilon,trial,config,payoff,global_optimum_config,global_optimum_payoff,global_worst_config,global_worst_payoff
+D_streetlight,,2,"{'alpha': 1, 'beta': 1, 'gamma': 1, 'delta': 1, 'epsilon': 1, 'zeta': 0, 'eta': 0, 'theta': 1, 'iota': 1, 'kappa': 1}",0.6895994879306186,"{'alpha': 1, 'beta': 1, 'gamma': 1, 'delta': 1, 'epsilon': 1, 'zeta': 0, 'eta': 0, 'theta': 0, 'iota': 1, 'kappa': 0}",0.7371559904046021,"{'alpha': 1, 'beta': 0, 'gamma': 1, 'delta': 0, 'epsilon': 1, 'zeta': 1, 'eta': 1, 'theta': 1, 'iota': 1, 'kappa': 0}",0.2468282313306509
