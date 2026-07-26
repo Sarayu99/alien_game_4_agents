@@ -9,7 +9,7 @@ isolation from one another.
 
 | File | Purpose |
 |---|---|
-| `config.py` | **Edit this file first.** All settings live here: your API key, model name, N/K, number of trials, epsilon values, streetlight anchor-selection settings, K sweep values, output folders. |
+| `config.py` | **All settings live here**: your API key, model name, N/K, number of trials, epsilon values, streetlight anchor-selection settings, K sweep values, output folders. |
 | `nk_landscape.py` | Builds the tunable NK-model rugged landscape (the "alien game" engine). Can be run directly (`python nk_landscape.py`) as a quick sanity check. |
 | `claude_client.py` | Thin wrapper around the Anthropic API (text + JSON + JSON-with-reasoning responses). You shouldn't need to edit this. |
 | `agents.py` | Defines the four agents: `AgentA` (myopic local search), `AgentB` (free replication), `AgentC` (epsilon-greedy), `AgentD` (streetlight). |
