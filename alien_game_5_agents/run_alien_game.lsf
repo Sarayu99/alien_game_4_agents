@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+#BSUB -J alien_game_4
+#BSUB -o /home/sarayu_anshuman/summer_research_2026/alien_game_4_agents/alien_game.%J.out
+#BSUB -e /home/sarayu_anshuman/summer_research_2026/alien_game_4_agents/alien_game.%J.err
+#BSUB -n 1
+#BSUB -W 16:00
+#BSUB -q normal
+#BSUB -u sarayu_anshuman@berkeley.edu
+
+echo "Job started on: $(hostname)"
+echo "Job started at: $(date)"
+
+cd ~/summer_research_2026/alien_game_4_agents
+
+source ~/.bashrc
+source /apps/anaconda3/bin/activate summer_research_2026_env
+
+# API key: either paste it into config.py (API_KEY) or export it here:
+# export ANTHROPIC_API_KEY="sk-ant-your-key-here"
+
+# Full K = 0/5/9 sweep; trials and episodes come from config.py (N_TRIALS, N_EPISODES).
+# Claude calls: Agents B and C = N_TRIALS x N_EPISODES x 3 each. At 24 x 10 that is 720 each (1,440 total).
+# Agents A and D make no API calls.
+# Walltime raised to 16h to be safe (about 4x the old per-K load).
+python run_multi_k_experiment.py
+
+# Single landscape only (comment out the line above, uncomment below):
+# python run_experiment.py --K 5 --trials 24 --episodes 10 --seed 42
+
+echo "Job finished at: $(date)"
